@@ -18,6 +18,7 @@ EXPERIMENT = re.compile(r"^(?:Commencing|Concluding).+\((.+), (\d), (.+)\)$")
 
 
 class Path(NamedTuple):
+    index: int
     weight: float
     content: str
 
@@ -39,7 +40,8 @@ class Sample(NamedTuple):
 
         with open(os.path.join(outputs, f"{uuid}.json"), "r") as file:
             output = json.load(file)
-            output["reasons"] = [Path._make(i) for i in output["reasons"]]
+            output["reasons"] = [Path._make([i] + j) for i, j
+                                 in enumerate(output["reasons"])]
 
         if len(output["reasons"]) != human_size + machine_size:
             raise RuntimeError("inconsistent size description for reasons")
