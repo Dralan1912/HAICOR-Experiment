@@ -1,0 +1,17 @@
+name: haicor-experiment
+channels:
+  - defaults
+  - vnmabus
+dependencies:
+  - ipython
+  - pylint
+  - autopep8
+  - matplotlib
+  - jupyter
+  - numpy
+  - nose
+  - pandas
+  - scipy
+  - sympy
+  - python
+  - dcor
